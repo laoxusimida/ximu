@@ -9,11 +9,15 @@
   <link rel="stylesheet" type="text/css" href="css/reset.css" />
   <link rel="stylesheet" type="text/css" href="css/iconfont.css" />
   <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+
   <!-- 引入bootstrap的css文件 -->
   <link rel="stylesheet" href="./js/bootstrap/css/bootstrap.min.css" />
 </head>
 
 <body>
+
+
   <div class="main_wrap">
     <div class="header">
       <a href="#" class="logo"><img src="images/logo.png" alt="" /></a>
@@ -24,12 +28,13 @@
 
     <div class="login_form_con">
       <div class="login_title"></div>
-      <form class="login_form">
+      <form class="login_form" id='loginForm'>
         <i class="iconfont icon-user"></i>
         <i class="iconfont icon-key"></i>
-        <input type="text" class="input_txt" placeholder="邮箱/手机号" id="username" />
-        <input type="password" class="input_pass" placeholder="密码" id="password" />
-        <input type="submit" class="input_sub" value="登 录" id="loginBtn" />
+
+        <input type="text" class="input_txt" placeholder="邮箱/手机号" name='username' id='username' />
+        <input type="password" class="input_pass" placeholder="密码" name='password' id='password' />
+        <input type="submit" class="input_sub" value="登 录" id='loginBtn' />
       </form>
     </div>
   </div>
@@ -59,6 +64,8 @@
   <script src="./js/jquery-1.12.4.min.js"></script>
   <!-- 引入bootstrap的js文件 -->
   <script src="./js/bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/login.js"></script>
+
   <script>
     // 登录功能的实现
     // 给登录按钮绑定点击事件
@@ -101,6 +108,8 @@
       return false;
     })
   </script>
+
+
 </body>
 
 </html>

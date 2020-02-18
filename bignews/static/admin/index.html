@@ -1,3 +1,14 @@
+<script src="js/jquery-1.12.4.min.js"></script>
+<script>
+  $.ajax({
+    url: 'http://localhost:8080/api/v1/admin/user/status',
+    async: false,
+    error: function () {
+      alert('请先登录');
+      window.location = '/admin/login.html';
+    }
+  });
+</script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,7 +93,8 @@
     <div class="user_center_link">
       <a href="user.html" onclick="setMenu(3,0)" target="main_frame">个人中心</a>
       <img src="images/2.jpg" alt="person">
-      <a href="#" id="login"><i class="iconfont icon-tuichu"></i> 退出</a>
+
+      <a href="#"><i class="iconfont icon-tuichu" id='logout'></i> 退出</a>
     </div>
   </div>
 
@@ -165,7 +177,7 @@
       }
     }
   </script>
-
+  <script src="js/logout.js"></script>
   <!-- 业务逻辑代码 -->
   <script>
     $('#login').on('click', function () {
