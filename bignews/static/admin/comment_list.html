@@ -1,3 +1,14 @@
+<script src="js/jquery-1.12.4.min.js"></script>
+<script>
+  $.ajax({
+    url: 'http://localhost:8080/api/v1/admin/user/status',
+    async: false,
+    error: function () {
+      alert('请先登录');
+      window.location = '/admin/login.html';
+    }
+  });
+</script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,33 +41,13 @@
           </tr>
         </thead>
         <tbody id="commentBox">
-          <tr>
-            <td>小周</td>
-            <td>这是一条测试评论，欢迎光临</td>
-            <td>《世界，你好》</td>
-            <td>2017-07-04 12:00:00</td>
-            <td>已批准</td>
-            <td class="text-center">
-              <a href="javascript:;" class="btn btn-warning btn-xs">拒绝</a>
-              <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-            </td>
-          </tr>
+
         </tbody>
       </table>
 
       <div class="row text-center">
-        <ul class="pagination pagination-sm">
-          <li class="page-item first disabled"><a href="#" class="page-link">首页</a></li>
-          <li class="page-item prev disabled"><a href="#" class="page-link">上一页</a></li>
-          <li class="page-item active"><a href="#" class="page-link">1</a></li>
-          <li class="page-item"><a href="#" class="page-link">2</a></li>
-          <li class="page-item"><a href="#" class="page-link">3</a></li>
-          <li class="page-item"><a href="#" class="page-link">4</a></li>
-          <li class="page-item"><a href="#" class="page-link">5</a></li>
-          <li class="page-item"><a href="#" class="page-link">6</a></li>
-          <li class="page-item"><a href="#" class="page-link">7</a></li>
-          <li class="page-item next"><a href="#" class="page-link">下一页</a></li>
-          <li class="page-item last"><a href="#" class="page-link">尾页</a></li>
+        <ul class="pagination pagination-sm" id="pageBox">
+
         </ul>
       </div>
 
@@ -74,7 +65,56 @@
   </script>
 
   <!-- 业务逻辑代码 -->
+
+  <script type="text/html" id="commentTpl">
+    {{each data.data}}
+    <tr>
+        <td>{{$value.author}}</td>
+        <td>{{$value.content}}</td>
+        <td>{{$value.title}}</td>
+        <td>2017-07-04 12:00:00</td>
+        <td>{{$value.state}}</td>
+        <td class="text-center">
+          <!-- 判断 评论是否审核过 -->
+          {{if $value.state == '待审核'}}
+          <a href="javascript:;" class="btn btn-warning btn-xs approve" style="background-color:green"  data-id="{{$value.id}}">批准</a>
+          <a href="javascript:;" class="btn btn-warning btn-xs refuse" data-id="{{$value.id}}">拒绝</a>
+          {{ else }}
+          <a href="javascript:;" class="btn btn-danger btn-xs delete" data-id="{{$value.id}}">删除</a>
+          {{/if}}
+        </td>
+      </tr>
+      {{/each}}
+  </script>
+
+  <script type="text/html" id="pageTpl">
+            <li class="page-item first disabled"><a href="javascript:;" class="page-link" onclick="changePage(1)">首页</a></li>
+            <!-- data.page 的值不能小于1 -->
+            <% if ( data.page > 1 ) {%>
+          <li class="page-item prev disabled"><a href="javascript:;" class="page-link" onclick="changePage(<%= data.page - 1 %>)">上一页</a></li>
+            <% }  %>
+            {{if  data.page -1 >0}}
+            {{if data.page - 2 > 0}}
+            <li class="page-item"><a href="javascript:;" class="page-link" onclick="changePage({{data.page - 2}})">{{data.page - 2}}</a></li>
+            {{/if}}
+            <li class="page-item"><a href="javascript:;" class="page-link" onclick="changePage({{data.page - 1}})">{{data.page - 1}}</a></li>
+            {{/if}}
+          <li class="page-item  active"><a href="javascript:;" class="page-link" onclick="changePage({{data.page}})"> {{data.page}}</a></li>
+          <!-- data.page 的值不能大于 data.totalPage -->
+          {{if data.page + 1 <=  data.totalPage}}
+          <li class="page-item"><a href="javascript:;" class="page-link" onclick="changePage({{data.page + 1}})">{{data.page + 1}}</a></li>
+          {{if data.page + 2  <=  data.totalPage}}
+          <li class="page-item"><a href="javascript:;" class="page-link" onclick="changePage({{data.page + 2}})">{{data.page + 2}}</a></li>
+          {{/if}}
+          {{/if}}
+          <% if ( data.page < data.totalPage ) {%>
+          <li class="page-item next"><a href="javascript:;" class="page-link" onclick="changePage(<%= data.page + 1 %>)">下一页</a></li>
+          <% } %>
+          <li class="page-item last"><a href="javascript:;" class="page-link" onclick="changePage(<%= data.totalPage %>)">尾页</a></li>
+  </script>
   <script>
+
+
   </script>
 </body>
 
