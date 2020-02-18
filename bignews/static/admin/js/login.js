@@ -19,6 +19,7 @@ $('#loginBtn').on('click', function () {
                 password: password
             },
             success: function (response) {
+                // console.log(response);
                 if (response.code == 200) {
                     // 将token储存到本地当中
                     localStorage.setItem('token', response.token)
