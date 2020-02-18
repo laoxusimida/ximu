@@ -5,15 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>大事件-文章</title>
+  <title>大事件-列表页</title>
   <link rel="stylesheet" type="text/css" href="css/reset.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.pagination.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="js/jquery.pagination.min.js"></script>
 </head>
 
 <body>
   <div class="header">
-    <a href="index.html" class="logo fl"><img src="images/logo.png" alt="logo"></a>
+    <a href="#" class="logo fl"><img src="images/logo.png" alt="logo"></a>
     <div class="search_form fl">
       <input type="text" class="search_txt" placeholder="黑洞照片" id='search'>
       <button class="search_btn" id='searchBtn'><i class="fa fa-search"></i></button>
@@ -55,32 +58,18 @@
 
   <div class="main_con clearfix">
     <div class="left_con setfr">
-      <div id='detailArticle'>
+
+      <div class="list_title" id='titleList'>
 
       </div>
 
-
-      <form action="" class="comment_form" id='commentForm'>
-        <div class="form_group">
-          <label>用户名：</label>
-          <input type="text" placeholder="请输入用户名" class="comment_name" name='username'>
-        </div>
-        <div class="form_group">
-          <label>评论内容：</label>
-          <textarea placeholder="请发表您的评论" class="comment_input" name='comment'></textarea>
-        </div>
-        <div class="form_group">
-          <input type="submit" name="" value="评 论" class="comment_sub"></div>
-      </form>
-
-      <div class="comment_count" id='commentCount'>
-        4条评论
-      </div>
-
-      <div class="comment_list_con" id='listBox'>
+      <div id='categoryBox'></div>
 
 
-      </div>
+
+      <div id="pagination" class="page"></div>
+
+
     </div>
     <div class="right_con setfl">
       <div class="common_wrap">
@@ -158,45 +147,25 @@
     <p>CopyRight © 2019 深圳大事件信息技术股份有限公司 All Rights Reserved</p>
     <p>电话：0755-****888 粤ICP备*******8号</p>
   </div>
-
-
-  <script src="./js/jquery-1.12.4.min.js"></script>
-  <script src="./js/template-web.js"></script>
-  <script type='text/html' id='articleTpl'>
-    <div class="breadcrumb">
-      当前位置： <a href="index.html">首页</a> &gt; <a href="list.html?id={{categoryId}}">{{category}}</a> &gt; 文章详情
-    </div>
-    <h3 class="article_title">{{title}}</h3>
-    <div class="article_info">{{author}} 发布于{{date}}&nbsp;&nbsp;&nbsp;分类: {{category}}&nbsp;&nbsp;&nbsp;阅读:
-      (98)&nbsp;&nbsp;&nbsp;评论: ({{read}})</div>
-    <div class="article_con">
-      <p>{{content}}</p>
-
-    </div>
-    <div class="article_links">
-      上一篇： <a href="article.html?id={{prev.id}}">{{prev.title}}</a><br>
-      下一篇： <a href="article.html?id={{next.id}}">{{next.title}}</a>
-    </div>
-  </script>
-  <script type='text/html' id='listTpl'>
+  <script type='text/html' id='categoryTpl'>
     {{each data}}
-    <div class="comment_detail_list">
-      <div class="person_pic fl">{{$value.author.substr(0,1)}}</div>
-      <div class="name_time fl"><b>{{$value.author}}</b><span>{{$imports.getTime($value.date,$value.time)}}前</span></div>
-      <div class="comment_text fl">
-        {{$value.content}}
+    <div class="common_news_list">
+      <a href="article.html?id={{$value.id}}" class="list_pic"><img src="{{$value.cover}}" alt=""></a>
+      <h4><a href="article.html?id={{$value.id}}">{{$value.title}} </a></h4>
+      <p>{{$value.content}}
+      </p>
+      <div class="new_info">
+        <span>标签：{{$value.category}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( {{$value.read}}
+          )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( {{$value.comments}} )</span>
+        <b>发布于 {{$value.date}}</b>
       </div>
     </div>
     {{/each}}
   </script>
-
+  <script src="js/template-web.js"></script>
   <script src="js/public.js"></script>
-  <script src="js/article.js"></script>
+  <script src="js/search.js"></script>
 
-  <!-- 文章页面的 js 代码  -->
-  <script>
-
-  </script>
 </body>
 
 </html>
