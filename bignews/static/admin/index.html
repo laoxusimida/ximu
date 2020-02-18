@@ -82,12 +82,13 @@
     <div class="user_center_link">
       <a href="user.html" onclick="setMenu(3,0)" target="main_frame">个人中心</a>
       <img src="images/2.jpg" alt="person">
-      <a href="#"><i class="iconfont icon-tuichu"></i> 退出</a>
+      <a href="#" id="login"><i class="iconfont icon-tuichu"></i> 退出</a>
     </div>
   </div>
 
   <div class="main" id="main_body">
-    <iframe src="main_count.html" frameborder="0" id="main_frame" name="main_frame" frameborder="0" scrolling="auto"></iframe>
+    <iframe src="main_count.html" frameborder="0" id="main_frame" name="main_frame" frameborder="0"
+      scrolling="auto"></iframe>
   </div>
 
   <!-- 模态框 -->
@@ -95,7 +96,8 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">温馨提示!</h4>
         </div>
         <div class="modal-body">
@@ -166,7 +168,12 @@
 
   <!-- 业务逻辑代码 -->
   <script>
-
+    $('#login').on('click', function () {
+      if (confirm('请确认是否退出')) {
+        window.localStorage.removeItem('token');
+        location.href = '/admin/login.html';
+      }
+    })
   </script>
 </body>
 
