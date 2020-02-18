@@ -4,11 +4,13 @@ $.ajax({
     type: 'get',
     success: function (response) {
 
+
         // 模板与数据拼接
         var html = template('categoryTpl', {
             data: response.data
         })
         $('#categoriesBox').html(html)
+
 
     }
 })
