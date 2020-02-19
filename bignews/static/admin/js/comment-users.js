@@ -6,6 +6,6 @@ $.ajax({
     success: function (response) {
         console.log(response);
         var html = template('userinfoTpl', response);
-        $('#userinfoBox').html(html)
+        $('#userInfo').html(html)
     }
 })

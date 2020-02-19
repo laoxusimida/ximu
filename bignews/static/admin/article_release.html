@@ -18,8 +18,8 @@
     <div class="common_title">
       写文章
     </div>
-    <div class="container-fluid common_con">
-      <form class="form-horizontal article_form">
+    <div class="container-fluid common_con" id="parentBox">
+      <form class="form-horizontal article_form" id="addForm">
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">文章标题：</label>
           <div class="col-sm-10">
@@ -28,21 +28,17 @@
         </div>
         <div class="form-group">
           <label for="inputPassword3" class="col-sm-2 control-label">文章封面：</label>
-          <div class="col-sm-10">
-            <img src="./images/2.jpg" style="height:120px;" alt="">
+          <div class="col-sm-10" id="covers">
+            <img src="./images/2.jpg" style="height:120px;" alt="" id="preview">
             <input type="file" name="cover" id="exampleInputFile">
+            <!-- <input type="hidden" name="cover" id="cover"> -->
+
           </div>
         </div>
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">文章类别：</label>
           <div class="col-sm-4">
-            <select class="form-control" name="categoryId" id="article_category">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+            <select class="form-control" name="categoryId" id="article_category"></select>
           </div>
         </div>
         <div class="form-group">
@@ -52,7 +48,8 @@
             <div class="input-group">
               <input type="text" name="date" class="form-control" placeholder="YYYY-MM-DD" id="dateinput">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button" onclick="jeDate('#dateinput',{trigger:false,format: 'YYYY-MM-DD'})"><i
+                <button class="btn btn-default" type="button"
+                  onclick="jeDate('#dateinput',{trigger:false,format: 'YYYY-MM-DD'})"><i
                     class="iconfont icon-icondate"></i></button>
               </span>
             </div>
@@ -61,15 +58,13 @@
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
           <div class="col-sm-10">
-            <textarea class="form-control" id="rich_content" placeholder="文章内容">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda fugiat illo nihil molestias ab. Laborum eius non atque, totam sapiente quae obcaecati assumenda ratione inventore pariatur maiores, qui libero delectus.
-                            </textarea>
+            <textarea class="form-control" id="rich_content" placeholder="文章内容"></textarea>
           </div>
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success btn-release">发布</button>
-            <button type="submit" class="btn btn-default">存为草稿</button>
+            <button type="submit" class="btn btn-success btn-release" name="state" onclick="flag=0">发布</button>
+            <button class="btn btn-default" name="state" onclick="flag=1" value="0mmei">存为草稿</button>
           </div>
         </div>
       </form>
@@ -82,11 +77,19 @@
   <script src="js/tinymce/js/tinymce_setup.js"></script>
   <script src="./js/moment.js"></script>
   <script src="./js/template-web.js"></script>
-  
   <!-- 业务逻辑代码 -->
-  <script>
-    
+
+
+  <script type="text/html" id="categoryTpl">
+    {{each category.data}}
+    <option value={{$value.id}}>{{$value.name}}</option>
+    {{/each}}
+
   </script>
+  <script src="./js/article_release.js"></script>
+
+
+
 </body>
 
 </html>

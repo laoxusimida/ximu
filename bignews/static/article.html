@@ -13,10 +13,10 @@
 
 <body>
   <div class="header">
-    <a href="#" class="logo fl"><img src="images/logo.png" alt="logo"></a>
+    <a href="index.html" class="logo fl"><img src="images/logo.png" alt="logo"></a>
     <div class="search_form fl">
-      <input type="text" class="search_txt" placeholder="黑洞照片">
-      <button class="search_btn"><i class="fa fa-search"></i></button>
+      <input type="text" class="search_txt" placeholder="黑洞照片" id='search'>
+      <button class="search_btn" id='searchBtn'><i class="fa fa-search"></i></button>
     </div>
     <div class="link_info fr">
       <a href="#"><i class="fa fa-angle-right"></i>&nbsp;&nbsp;网站地图</a><br>
@@ -28,7 +28,7 @@
     <div class="menu">
       <div class="menu_collapse fl">
         <a href="javascript:;" class="level_one"><i class="fa fa-list-ul"></i>全部分类</a>
-        <ul class="level_two">
+        <ul class="level_two" id='levelFirst'>
           <li class="up"></li>
           <li><a href="#">最 新</a></li>
           <li><a href="#">科 技</a></li>
@@ -38,7 +38,7 @@
           <li><a href="#">公 司</a></li>
         </ul>
       </div>
-      <ul class="left_menu fl">
+      <ul class="left_menu fl" id="levelTwo">
         <li><a href="#">最 新</a></li>
         <li><a href="#">科 技</a></li>
         <li><a href="#">股 市</a></li>
@@ -47,7 +47,7 @@
         <li><a href="#">公 司</a></li>
       </ul>
       <ul class="right_menu fr">
-        <li><a href="#">科技专题</a></li>
+        <li><a href="#">生活专题</a></li>
         <li><a href="#">财经专题</a></li>
       </ul>
     </div>
@@ -55,83 +55,37 @@
 
   <div class="main_con clearfix">
     <div class="left_con setfr">
-      <div class="breadcrumb">
-        当前位置： <a href="#">首页</a> &gt; <a href="#">科技</a> &gt; 文章详情
-      </div>
-      <h3 class="article_title">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</h3>
-      <div class="article_info">杰克 发布于 2019-05-08 07:08:46&nbsp;&nbsp;&nbsp;分类: 奇趣事&nbsp;&nbsp;&nbsp;阅读:
-        (98)&nbsp;&nbsp;&nbsp;评论: (0)</div>
-      <div class="article_con">
-
-        <p>“上天入地”还不够？硅谷“钢铁侠”马斯克名下一家低调的公司最近又融了一大笔钱。</p>
-
-        <p>马斯克投资的一家小型且不为人熟知的脑机接口（brain-computer
-          interface）公司Neuralink披露，该公司融到了3900万美元，虽然不及公司计划的融资额5100万美元，但也比上次的融资多了不少。</p>
-
-        <p>两年前该公司曾计划融资1亿美元，但只拿到了2700万美元的融资。</p>
-
-        <p>在Neuralink递交给美国证券交易委员会（SEC）的材料中，并没有披露融资是否来自传统的风险投资者或者来自该公司的员工。</p>
-
-        <p>2016年，Neuralink在美国加利福尼亚州以医学研究公司的名义成立，之后一直低调运行。</p>
+      <div id='detailArticle'>
 
       </div>
-      <div class="article_links">
-        上一篇： <a href="#">世界第一台可以玩游戏的冰箱</a><br>
-        下一篇： <a href="#">世界第一个可以玩游戏的马桶、世界上第一个可以玩游戏的茶杯</a>
-      </div>
 
-      <form action="" class="comment_form">
+
+      <form action="" class="comment_form" id='commentForm'>
         <div class="form_group">
           <label>用户名：</label>
-          <input type="text" placeholder="请输入用户名" class="comment_name">
+          <input type="text" placeholder="请输入用户名" class="comment_name" name='username'>
         </div>
         <div class="form_group">
           <label>评论内容：</label>
-          <textarea placeholder="请发表您的评论" class="comment_input"></textarea>
+          <textarea placeholder="请发表您的评论" class="comment_input" name='comment'></textarea>
         </div>
         <div class="form_group">
           <input type="submit" name="" value="评 论" class="comment_sub"></div>
       </form>
 
-      <div class="comment_count">
+      <div class="comment_count" id='commentCount'>
         4条评论
       </div>
 
-      <div class="comment_list_con">
-        <div class="comment_detail_list">
-          <div class="person_pic fl">乔</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">段</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">虚</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">王</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
+      <div class="comment_list_con" id='listBox'>
+
+
       </div>
     </div>
     <div class="right_con setfl">
       <div class="common_wrap">
         <h3><i class="fa fa-bar-chart"></i> 一周热门排行</h3>
-        <ul class="content_list">
+        <ul class="content_list" id='hotList'>
           <li><span class="first">1</span><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
           <li><span class="second">2</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><span class="third">3</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
@@ -143,7 +97,7 @@
       </div>
       <div class="common_wrap">
         <h3><i class="fa fa-commenting-o"></i> 最新评论</h3>
-        <ul class="content_list comment_list">
+        <ul class="content_list comment_list" id='commentBox'>
           <li>
             <span>山</span>
             <b><em>山治</em> 9个月前(08-14)说:</b>
@@ -178,7 +132,7 @@
       </div>
       <div class="common_wrap">
         <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
-        <ul class="content_list guanzhu_list">
+        <ul class="content_list guanzhu_list" id='puple'>
           <li><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
           <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
@@ -208,6 +162,36 @@
 
   <script src="./js/jquery-1.12.4.min.js"></script>
   <script src="./js/template-web.js"></script>
+  <script type='text/html' id='articleTpl'>
+    <div class="breadcrumb">
+      当前位置： <a href="index.html">首页</a> &gt; <a href="list.html?id={{categoryId}}">{{category}}</a> &gt; 文章详情
+    </div>
+    <h3 class="article_title">{{title}}</h3>
+    <div class="article_info">{{author}} 发布于{{date}}&nbsp;&nbsp;&nbsp;分类: {{category}}&nbsp;&nbsp;&nbsp;阅读:
+      (98)&nbsp;&nbsp;&nbsp;评论: ({{read}})</div>
+    <div class="article_con">
+      <p>{{content}}</p>
+
+    </div>
+    <div class="article_links">
+      上一篇： <a href="article.html?id={{prev.id}}">{{prev.title}}</a><br>
+      下一篇： <a href="article.html?id={{next.id}}">{{next.title}}</a>
+    </div>
+  </script>
+  <script type='text/html' id='listTpl'>
+    {{each data}}
+    <div class="comment_detail_list">
+      <div class="person_pic fl">{{$value.author.substr(0,1)}}</div>
+      <div class="name_time fl"><b>{{$value.author}}</b><span>{{$imports.getTime($value.date,$value.time)}}前</span></div>
+      <div class="comment_text fl">
+        {{$value.content}}
+      </div>
+    </div>
+    {{/each}}
+  </script>
+
+  <script src="js/public.js"></script>
+  <script src="js/article.js"></script>
 
   <!-- 文章页面的 js 代码  -->
   <script>
