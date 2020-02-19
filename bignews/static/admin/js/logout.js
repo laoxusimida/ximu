@@ -15,5 +15,6 @@ $.ajax({
         console.log(res);
         var html = template('userTpl', res.data)
         $('#userInfo').html(html)
+        $('#preview').attr('src', res.data.userPic)
     }
 })
