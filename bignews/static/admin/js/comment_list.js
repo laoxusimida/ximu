@@ -10,7 +10,7 @@ function changePage(page) {
             page: page
         },
         success: function (response) {
-
+            console.log(response)
             // 渲染评论列表
             var html = template('commentTpl', response);
             $('#commentBox').html(html);
@@ -49,7 +49,7 @@ function changePage(page) {
             }
 
 
-            console.log(display);
+            // console.log(display);
 
             // 给response新增一个display属性
             response.display = display;
@@ -64,7 +64,9 @@ function changePage(page) {
 
 // 评论审核通过
 $('#commentBox').on('click', '.approve', function () {
+    // 获取 当前数据的id 
     var id = $(this).attr('data-id');
+    // 获取 当前数据所在的页数
     var page = $(this).attr('data-page');
     // console.log(id);
 
@@ -85,9 +87,12 @@ $('#commentBox').on('click', '.approve', function () {
     }
 
 })
+
 // 评论审核不通过
 $('#commentBox').on('click', '.refuse', function () {
+    // 获取 当前数据的id 
     var id = $(this).attr('data-id');
+    // 获取 当前数据所在的页数
     var page = $(this).attr('data-page');
     if (confirm('评论是否拒绝')) {
         $.ajax({
@@ -104,9 +109,12 @@ $('#commentBox').on('click', '.refuse', function () {
         })
     }
 })
+
 // 删除评论
 $('#commentBox').on('click', '.delete', function () {
+    // 获取 当前数据的id 
     var id = $(this).attr('data-id');
+    // 获取 当前数据所在的页数
     var page = $(this).attr('data-page');
     if (confirm('是否删除评论')) {
         $.ajax({
@@ -117,8 +125,26 @@ $('#commentBox').on('click', '.delete', function () {
             },
             success: function (response) {
                 // console.log(response);
-                // 评论删除后跳转到本页面的跳转前的页数
-                changePage(page);
+
+                $.ajax({
+                    type: 'get',
+                    url: 'http://localhost:8080/api/v1/admin/comment/search',
+                    data: {
+                        page: page
+                    },
+                    success: function (response) {
+                        // 判断删除后页面上是否还有元素
+                        if (response.data.data.length > 0) {
+                            // 评论删除后页面上还有元素跳转到本页面的跳转当前的页数
+                            changePage(page);
+                        } else {
+                            // 评论删除后页面上没有元素跳转到本页面的跳转前一个的页数
+                            page = response.data.page - 1;
+                            changePage(page);
+                        }
+                    }
+                })
+
             }
         })
     }
