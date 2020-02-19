@@ -45,7 +45,7 @@ $('#articleForm').on('submit', function () {
             console.log(response);
             if (response.code == 200) {
                 alert('修改成功');
-                location.reload()
+                top.location.href = 'login.html'
             }
         }
     })
