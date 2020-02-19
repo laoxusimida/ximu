@@ -38,15 +38,13 @@ $('#addForm').on('submit', function () {
         processData: false,
         contentType: false,
         success: function (response) {
-            console.log(response)
-            location.reload();
+            if (response.code == 200) {
+                location.href = 'article_list.html'
+
+            }
             // alert('添加成功')
         },
-        error: function (error) {
-            // alert('文章创建失败');
-            console.log(error);
 
-        }
     })
     //阻止表单默认提交行为
     return false;

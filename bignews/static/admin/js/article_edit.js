@@ -59,8 +59,9 @@ $('#editForm').on('submit', function () {
         contentType: false,
         success: function (response) {
             // console.log(response)
-            // location.reload();
             alert('修改成功')
+            location.href = 'article_list.html'
+
         },
         error: function (error) {
             // alert('文章创建失败');

@@ -105,16 +105,18 @@ $('#categoriesBox').on('click', '.delete', function () {
     // 获取其id
     var id = $(this).attr('data-id')
     // 发送ajax请求
-    $.ajax({
-        url: "http://localhost:8080/api/v1/admin/category/delete",
-        data: {
-            id: id
-        },
-        type: 'post',
-        success: function (msg) {
-            console.log(msg);
-            location.reload()
+    if (confirm('您确定要删除么？')) {
+        $.ajax({
+            url: "http://localhost:8080/api/v1/admin/category/delete",
+            data: {
+                id: id
+            },
+            type: 'post',
+            success: function (msg) {
+                console.log(msg);
+                location.reload()
 
-        }
-    })
+            }
+        })
+    }
 })

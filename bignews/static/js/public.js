@@ -205,10 +205,27 @@ function getdate(period) {
 // 搜索框搜索功能
 $('#searchBtn').on('click', function () {
     // 获取输入内容
-    var key = $('#search').val()
-
+    var keys = $('#search').val()
 
     // 页面跳转
-    location.href = 'search.html?key=' + key
+    location.href = 'search.html?key=' + keys
 
 })
+
+
+$('#search').on('keyup', function (e) {
+    if (e.keyCode == 13) {
+        var keys = $(this).val()
+        location.href = 'search.html?key=' + keys
+    }
+    // 页面跳转
+
+
+})
+
+//从浏览器的地址栏中获取指定的参数
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return decodeURIComponent(r[2]); return null;
+}
