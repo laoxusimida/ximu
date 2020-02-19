@@ -77,10 +77,10 @@
         <td class="text-center">
           <!-- 判断 评论是否审核过 -->
           {{if $value.state == '待审核'}}
-          <a href="javascript:;" class="btn btn-warning btn-xs approve" style="background-color:green"  data-id="{{$value.id}}">批准</a>
-          <a href="javascript:;" class="btn btn-warning btn-xs refuse" data-id="{{$value.id}}">拒绝</a>
+          <a href="javascript:;" class="btn btn-warning btn-xs approve" style="background-color:green"  data-id="{{$value.id}}" data-page="{{data.page}}">批准</a>
+          <a href="javascript:;" class="btn btn-warning btn-xs refuse" data-id="{{$value.id}}" data-page="{{data.page}}">拒绝</a>
           {{ else }}
-          <a href="javascript:;" class="btn btn-danger btn-xs delete" data-id="{{$value.id}}">删除</a>
+          <a href="javascript:;" class="btn btn-danger btn-xs delete" data-id="{{$value.id}}" data-page="{{data.page}}">删除</a>
           {{/if}}
         </td>
       </tr>
