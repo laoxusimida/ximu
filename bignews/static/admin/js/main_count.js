@@ -214,13 +214,9 @@ $.ajax({
         // 获取日期
         var rdate = msg.data
         console.log(rdate);
-
         // 遍历对象获取属性
-        var crr = [];
         // 属性值
         var nucc = []
-        var cdate = Object.keys(rdate)
-        console.log(cdate);
 
         for (var key in rdate) {
             nucc.push(rdate[key])

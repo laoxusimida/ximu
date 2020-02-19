@@ -208,7 +208,7 @@
       var keys = $('#search').val()
 
       // 页面跳转
-      location.href = 'article_list.html?key=' + keys
+      location.href = 'search.html?key=' + keys
 
     })
 
@@ -216,7 +216,7 @@
     $('#search').on('keyup', function (e) {
       if (e.keyCode == 13) {
         var keys = $(this).val()
-        location.href = 'article_list.html?key=' + keys
+        location.href = 'search.html?key=' + keys
       }
       // 页面跳转
 

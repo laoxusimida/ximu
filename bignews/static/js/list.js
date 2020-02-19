@@ -20,7 +20,6 @@ $.ajax({
             var count = res.data.totalCount
             $('#pagination').pagination({
                 totalPage: pagecount - 1,
-                pageCount: pagecount,
                 totalCount: count,
                 jump: true,
                 coping: false,
@@ -29,7 +28,7 @@ $.ajax({
                 nextContent: '<下一页>',
                 homePage: '首页',
                 endPage: '末页',
-                jumpBtn: '确定',
+
                 callback: function (index) {
                     page = index
                     exchangePage(page)

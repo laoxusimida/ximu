@@ -17,7 +17,6 @@ $('#loginBtn').on('click', function () {
         $('#username').focus()
         return false
     }
-
     else {
         // 发送ajax请求
         $.ajax({

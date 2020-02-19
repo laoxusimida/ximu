@@ -39,7 +39,10 @@ $('#commentForm').on('submit', function () {
                 alert('评论成功')
                 location.reload()
             }
-
+        },
+        error: function (res) {
+            alert('请输入正确的用户名')
+            location.reload()
         }
     })
     // 阻止表单默认提交
@@ -57,14 +60,11 @@ $.ajax({
     success: function (res) {
         console.log(res);
         var length = res.data.length
-        var timeList = res.data;
-
 
         // 数据模板拼接
         var html = template('listTpl', {
             data: res.data
         })
-
 
         $('#listBox').html(html)
         $('#commentCount').html(length + '条评论')
