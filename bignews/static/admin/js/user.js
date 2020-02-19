@@ -24,8 +24,6 @@ $('#articleForm').on('change', '#exampleInputFile', function () {
     var url = URL.createObjectURL(files)
     // 图片预览
     $('#coverImg').attr('src', url)
-
-
 })
 
 // 实现用户信息修改功能
@@ -45,7 +43,7 @@ $('#articleForm').on('submit', function () {
             console.log(response);
             if (response.code == 200) {
                 alert('修改成功');
-                location.reload()
+                top.location.href = 'login.html'
             }
         }
     })
