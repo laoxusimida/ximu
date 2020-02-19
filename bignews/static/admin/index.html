@@ -26,10 +26,8 @@
 <body>
   <div class="sider">
     <a href="#" class="logo"><img src="images/logo02.png" alt="logo"></a>
-    <div class="user_info">
-      <img src="images/2.jpg" alt="person">
-      <span>欢迎&nbsp;&nbsp;李思思</span>
-      <b>管理员</b>
+    <div id="userinfoBox">
+
     </div>
     <div class="menu">
       <div class="level01 active">
@@ -187,6 +185,18 @@
       }
     })
   </script>
+  <script src="./js/comment-users.js"></script>
+  <!-- 侧边栏用户信息展示 -->
+  <script type="text/html" id="userinfoTpl">
+    <!-- <a href="user.html" class="logo"><img src="images/logo02.png" alt="logo"></a> -->
+  <div class="user_info">
+    <img src="{{data.userPic}}" alt="person">
+    <span>欢迎&nbsp;&nbsp;{{data.nickname}}</span>
+    <b>管理员</b>
+  </div>
+  </script>
+  <!-- 引入模板库文件 -->
+  <script src="./js/template-web.js"></script>
 </body>
 
 </html>
