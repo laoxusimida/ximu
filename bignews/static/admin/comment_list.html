@@ -92,27 +92,16 @@
             <!-- data.page 的值不能小于1 -->
             <% if ( data.page > 1 ) {%>
           <li class="page-item prev disabled"><a href="javascript:;" class="page-link" onclick="changePage(<%= data.page - 1 %>)">上一页</a></li>
-            <% }  %>
-            {{if  data.page -1 >0}}
-            {{if data.page - 2 > 0}}
-            <li class="page-item"><a href="javascript:;" class="page-link" onclick="changePage({{data.page - 2}})">{{data.page - 2}}</a></li>
-            {{/if}}
-            <li class="page-item"><a href="javascript:;" class="page-link" onclick="changePage({{data.page - 1}})">{{data.page - 1}}</a></li>
-            {{/if}}
-          <li class="page-item  active"><a href="javascript:;" class="page-link" onclick="changePage({{data.page}})"> {{data.page}}</a></li>
-          <!-- data.page 的值不能大于 data.totalPage -->
-          {{if data.page + 1 <=  data.totalPage}}
-          <li class="page-item"><a href="javascript:;" class="page-link" onclick="changePage({{data.page + 1}})">{{data.page + 1}}</a></li>
-          {{if data.page + 2  <=  data.totalPage}}
-          <li class="page-item"><a href="javascript:;" class="page-link" onclick="changePage({{data.page + 2}})">{{data.page + 2}}</a></li>
-          {{/if}}
-          {{/if}}
+            <% } %>
+{{each display}}
+         <li class="page-item {{$value == data.page ? 'active' :''}}" ><a href="javascript:;" class="page-link" onclick="changePage({{$value}})">{{$value}}</a></li>
+   {{/each}}
           <% if ( data.page < data.totalPage ) {%>
           <li class="page-item next"><a href="javascript:;" class="page-link" onclick="changePage(<%= data.page + 1 %>)">下一页</a></li>
           <% } %>
           <li class="page-item last"><a href="javascript:;" class="page-link" onclick="changePage(<%= data.totalPage %>)">尾页</a></li>
   </script>
-  <script src="./comment_list.js"></script>
+  <script src="./js/comment_list.js"></script>
 </body>
 
 </html>
