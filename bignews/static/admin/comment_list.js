@@ -79,7 +79,7 @@ $('#commentBox').on('click', '.approve', function () {
             },
             success: function (response) {
                 // console.log(response);
-                // location.reload();
+                location.reload();
             }
         })
     }

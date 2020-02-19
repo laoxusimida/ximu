@@ -43,6 +43,7 @@ $('#articleForm').on('submit', function () {
             console.log(response);
             if (response.code == 200) {
                 alert('修改成功');
+                window.localStorage.removeItem('token');
                 top.location.href = 'login.html'
             }
         }
