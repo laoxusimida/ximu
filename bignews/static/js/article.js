@@ -1,7 +1,7 @@
 var id = getUrlParams('id')
 console.log(id);
 
-// 发送ajax请求获取文章相信信息
+// 发送ajax请求获取文章详细信息
 
 $.ajax({
     url: "http://localhost:8080/api/v1/index/article",
@@ -57,10 +57,15 @@ $.ajax({
     success: function (res) {
         console.log(res);
         var length = res.data.length
+        var timeList = res.data;
+
+
         // 数据模板拼接
         var html = template('listTpl', {
             data: res.data
         })
+
+
         $('#listBox').html(html)
         $('#commentCount').html(length + '条评论')
     }

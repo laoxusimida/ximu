@@ -14,19 +14,26 @@ $.ajax({
                 data: res.data.data
             })
             $('#categoryBox').html(html)
-            $('#titleList').html(`<h3>${res.data.data[0].category}</h3>`)
+            $('#titleList').html(`<h3>${res.data.data[0] && res.data.data[0].category}</h3>`)
             var pagecount = res.data.pages;
+            console.log(pagecount)
+            var count = res.data.totalCount
             $('#pagination').pagination({
+                totalPage: pagecount - 1,
                 pageCount: pagecount,
+                totalCount: count,
                 jump: true,
                 coping: false,
                 count: 3,
                 prevContent: '<上一页',
-                nextContent: '下一页>',
+                nextContent: '<下一页>',
+                homePage: '首页',
+                endPage: '末页',
                 jumpBtn: '确定',
                 callback: function (index) {
                     page = index
                     exchangePage(page)
+
                 }
             });
         }
@@ -52,7 +59,7 @@ function exchangePage(page) {
                     data: res.data.data
                 })
                 $('#categoryBox').html(html)
-                $('#titleList').html(`<h3>${res.data.data[0].category}</h3>`)
+                $('#titleList').html(`<h3>${res.data.data[0] && res.data.data[0].category}</h3>`)
             }
         }
     })

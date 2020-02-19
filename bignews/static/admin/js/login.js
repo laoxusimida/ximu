@@ -5,11 +5,20 @@ $('#loginBtn').on('click', function () {
     var username = $('#username').val();
     var password = $('#password').val()
     // 验证用户名和密码是否为空
-    if (username.trim().length == 0 || password.trim().length == 0) {
-        alert('请输入邮箱和密码')
+    if (username.trim().length == 0) {
+        alert('请输入用户名')
         // 阻止程序向下执行
+        location.reload()
         return false
-    } else {
+    } else if (password.trim().length == 0) {
+        alert('请输入密码')
+        location.reload()
+
+        $('#username').focus()
+        return false
+    }
+
+    else {
         // 发送ajax请求
         $.ajax({
             url: 'http://localhost:8080/api/v1/admin/user/login',
@@ -25,12 +34,10 @@ $('#loginBtn').on('click', function () {
                     localStorage.setItem('token', response.token)
                     // 页面跳转到首页
                     location.href = 'index.html'
+                } else {
+                    alert('登录失败,请输入正确的用户名或密码')
+                    location.reload()
                 }
-                else {
-                    alert('登陆失败')
-                }
-
-
             },
 
         })

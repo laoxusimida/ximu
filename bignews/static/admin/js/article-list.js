@@ -1,4 +1,4 @@
-
+var key = GetQueryString('key')
 function getUrlParams(name) {
     var params = location.search.substr(1).split('&');
     for (var i = 0; i < params.length; i++) {
@@ -115,10 +115,44 @@ $('#filterForm').on('submit', function () {
                     changePage(page);
                 }
             });
+
+
+
         }
     })
     return false;
 })
+
+$('#articleBox').on('click', '.delete', function () {
+    var id = $(this).attr('data-id');
+    var isConfirm = confirm('是否要删除该文章');
+    if (isConfirm) {
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost:8080/api/v1/admin/article/delete',
+            data: {
+                id: id
+            },
+            success: function (res) {
+                location.reload();
+            }
+        })
+    }
+})
+
+
+// 获取文章信息根据关键字
+$.ajax({
+    url: 'http://localhost:8080/api/v1/admin/article/query',
+    type: 'get',
+    data: {
+        key: key
+    },
+    success: function (res) {
+        console.log(res)
+    }
+})
+
 
 
 

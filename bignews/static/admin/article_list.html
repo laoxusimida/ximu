@@ -86,7 +86,7 @@
     <td class="text-center">{{$value.state}}</td>
     <td class="text-center">
       <a href="article_edit.html?id={{$value.id}}" class="btn btn-default btn-xs edit" data-id="{{$value.id}}">编辑</a>
-      <a href="javascript:deleteTr( 1005 );" class="btn btn-danger btn-xs">删除</a>
+      <a href="javascript:;" class="btn btn-danger btn-xs delete" data-id='{{$value.id}}'>删除</a>
     </td>
   </tr>
 
@@ -108,7 +108,7 @@
 
   </script>
 
-
+  <script src="js/public.js"></script>
   <script src="./js/article-list.js"></script>
 
 </body>

@@ -84,8 +84,8 @@
 
   <div class="header_bar">
     <form class="search_form">
-      <input type="text" placeholder="请输入搜索内容">
-      <i class="iconfont icon-search"></i>
+      <input type="text" placeholder="请输入搜索内容" id='search'>
+      <i class="iconfont icon-search" id='searchBtn'></i>
     </form>
 
     <div class="user_center_link">
@@ -182,7 +182,6 @@
     <span>欢迎&nbsp;&nbsp;{{nickname}}</span>
     <b>管理员</b>
   </script>
-  <script src="js/logout.js"></script>
   <!-- 业务逻辑代码 -->
   <script>
     $('#login').on('click', function () {
@@ -203,7 +202,37 @@
   </div>
   </script>
   <!-- 引入模板库文件 -->
+  <script>
+    $('#searchBtn').on('click', function () {
+      // 获取输入内容
+      var keys = $('#search').val()
+
+      // 页面跳转
+      location.href = 'article_list.html?key=' + keys
+
+    })
+
+
+    $('#search').on('keyup', function (e) {
+      if (e.keyCode == 13) {
+        var keys = $(this).val()
+        location.href = 'article_list.html?key=' + keys
+      }
+      // 页面跳转
+
+
+    })
+
+    //从浏览器的地址栏中获取指定的参数
+    function GetQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) return decodeURIComponent(r[2]); return null;
+    }
+  </script>
   <script src="./js/template-web.js"></script>
+  <script src="js/logout.js"></script>
+
 </body>
 
 </html>
