@@ -1,3 +1,14 @@
+<script src="js/jquery-1.12.4.min.js"></script>
+<script>
+  $.ajax({
+    url: 'http://localhost:8080/api/v1/admin/user/status',
+    async: false,
+    error: function () {
+      alert('请先登录');
+      window.location = '/admin/login.html';
+    }
+  });
+</script>
 <!DOCTYPE html>
 <html lang="en">
 
