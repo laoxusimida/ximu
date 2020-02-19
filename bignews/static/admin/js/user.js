@@ -7,12 +7,11 @@ $.ajax({
         // console.log(response);
         /* 渲染用户信息 */
         if (response.code == 200) {
-
             // 把用户名称渲染到页面上
             $('input[name="username"]').val(response.data.username)
             $('input[name="nickname"]').val(response.data.nickname)
             $('input[name="email"]').val(response.data.email)
-            $('.user_pic').attr('src', response.data.userPic)
+            $('#coverImg').attr('src', response.data.userPic)
             $('input[name="password"]').val(response.data.password)
         }
     }
@@ -40,9 +39,10 @@ $('#articleForm').on('submit', function () {
         processData: false,
         data: formData,
         success: function (response) {
-            console.log(response);
+            // console.log(response);
             if (response.code == 200) {
                 alert('修改成功');
+                window.localStorage.removeItem('token');
                 top.location.href = 'login.html'
             }
         }
