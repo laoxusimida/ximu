@@ -42,8 +42,9 @@ $('#articleForm').on('submit', function () {
             // console.log(response);
             if (response.code == 200) {
                 alert('修改成功');
-                // 修改成功退出登录 跳转回登录页面
+                // 修改成功退出登录 
                 window.localStorage.removeItem('token');
+                // 跳转回登录页面
                 top.location.href = 'login.html'
             }
         }
