@@ -7,6 +7,39 @@ $.ajax({
         // 渲染评论列表
         var html = template('commentTpl', response);
         $('#commentBox').html(html);
+        var dd = [];
+
+        console.log(response.data.page);
+        for (var i = 1; i <= response.data.totalPage; i++) {
+
+            dd[i - 1] = i;
+        }
+
+        var display = [];
+
+        // 判断要截取的当前页两端是否有值
+        if (response.data.page >= 3 && response.data.page + 2 <= response.data.totalPage) {
+
+            display = dd.slice(response.data.page - 3, response.data.page + 2);
+
+        } else if (response.data.page == 1) {
+            // alert(1)
+            display = dd.slice(response.data.page - 1, response.data.page + 4);
+
+        } else if (response.data.page == 2) {
+            display = dd.slice(response.data.page - 2, response.data.page + 3);
+
+        } else if (response.data.page == response.data.totalPage) {
+
+            display = dd.slice(response.data.page - 5, response.data.page);
+
+        } else if (response.data.page == response.data.totalPage - 1) {
+
+            display = dd.slice(response.data.page - 4, response.data.page + 1);
+        }
+
+        response.display = display;
+        console.log(display);
 
         // 渲染分页信息
         var hh = template('pageTpl', response);
@@ -26,9 +59,46 @@ function changePage(page) {
             page: page
         },
         success: function (response) {
+
             // 渲染评论列表
             var html = template('commentTpl', response);
             $('#commentBox').html(html);
+
+            var dd = [];
+            // console.log(response.data.totalPage);
+
+            console.log(response.data.page);
+
+            for (var i = 1; i <= response.data.totalPage; i++) {
+
+                dd[i - 1] = i;
+            }
+            var display = [];
+            if (response.data.page - 3 >= 0 && response.data.page + 2 <= response.data.totalPage) {
+
+                display = dd.slice(response.data.page - 3, response.data.page + 2);
+
+            } else if (response.data.page == 1) {
+                // alert(1)
+                display = dd.slice(response.data.page - 1, response.data.page + 4);
+
+            } else if (response.data.page == 2) {
+
+                display = dd.slice(response.data.page - 2, response.data.page + 3);
+
+            } else if (response.data.page == response.data.totalPage) {
+
+                display = dd.slice(response.data.page - 5, response.data.page);
+
+            } else if (response.data.page == response.data.totalPage - 1) {
+
+                display = dd.slice(response.data.page - 4, response.data.page + 1);
+            }
+
+
+            console.log(display);
+
+            response.display = display;
 
             // 渲染分页信息
             var hh = template('pageTpl', response);
@@ -38,31 +108,7 @@ function changePage(page) {
     })
 }
 
-// 审核品论是否通过
-// $('#commentBox').on('click', '.modify', function () {
-//   var id = $(this).attr('data-id');
-//   // console.log(id);
-//   var Approval = '';
-//   if ($(this).text() == '批准') {
-//     Approval = '/admin/comment/pass';
-//   } else {
-//     Approval = '/admin/comment/reject';
-//   }
-//   console.log(Approval);
 
-//   $.ajax({
-//     type: 'post',
-//     url: 'http://localhost:8080/api/v1' + Approval,
-//     data: {
-//       id: id
-//     },
-//     success: function (response) {
-//       // console.log(response);
-//       location.reload();
-//     }
-//   })
-//   return false;
-// })
 
 
 // 评论审核通过
@@ -79,7 +125,7 @@ $('#commentBox').on('click', '.approve', function () {
             },
             success: function (response) {
                 // console.log(response);
-                // location.reload();
+                location.reload();
             }
         })
     }
